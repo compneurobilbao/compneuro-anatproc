@@ -2,7 +2,7 @@
 
 input=$1
 output=$2
-template=$FSLDIR/data/standard/MNI152_T1_1mm.nii.gz
+template=$3
 
 fslreorient2std $input reoriented_img -copysform2qform
 robustfov -i reoriented_img -m roi2full.mat -r input_robustfov.nii.gz
