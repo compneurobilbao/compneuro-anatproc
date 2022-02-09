@@ -9,9 +9,9 @@
 #################################################################################
 
 
-if [ -f /data/brainMeasures.tsv ]
+if [ -f /project/data/brainMeasures.tsv ]
 then
-	rm /data/brainMeasures.tsv
+	rm /project/data/brainMeasures.tsv
 fi
 
 echo "PARTICIPANT	BRAINSCALE	GRAYMATTERVOL	WHITEMATTERVOL" > /data/brainMeasures.tsv
@@ -24,6 +24,6 @@ do
 	vscale=$(grep VSCALING Preproc/Anat/${participant}_acpc/${participant}_acpc_sienax/report.sienax | awk '{ print $2 }') 
 	gm_scale=$(grep GREY Preproc/Anat/${participant}_acpc/${participant}_acpc_sienax/report.sienax | awk '{ print $2 }') 
 	wm_scale=$(grep WHITE Preproc/Anat/${participant}_acpc/${participant}_acpc_sienax/report.sienax | awk '{ print $2 }') 
-	echo "${participant}	${vscale}	${gm_scale}	${wm_scale}" >> /app/brainMeasures.tsv
+	echo "${participant}	${vscale}	${gm_scale}	${wm_scale}" >> /project/data/brainMeasures.tsv
 	
-done < /data/participants.tsv
+done < /project/data/participants.tsv
