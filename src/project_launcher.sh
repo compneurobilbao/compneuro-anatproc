@@ -6,7 +6,6 @@
 #                                                         #
 ###########################################################
 
-source activate ICAaroma
 
 while read line
 do

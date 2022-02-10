@@ -8,6 +8,7 @@
 ## extraction and tissue segmentation                                          ##
 #################################################################################
 
+source activate ICAaroma
 
 participant=$1
 
