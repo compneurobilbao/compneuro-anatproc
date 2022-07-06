@@ -11,7 +11,7 @@ while read line
 do
     participant=$( echo ${line} | awk '{ print $1 }')
 
-	if [  -f "Preproc/BET/${participant}_T1w_brain.nii.gz" ]; then
+	if [  -f "/project/Preproc/BET/${participant}_T1w_brain.nii.gz" ]; then
         echo "$participant already processed"
     else
         echo "*********************"
