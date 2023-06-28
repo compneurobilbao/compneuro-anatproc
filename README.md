@@ -38,13 +38,13 @@ sudo make dev
 For anatomical image preprocessing run:
 
 ```bash
-/app/src/apreproc_launcher.sh
+src/apreproc_launcher.sh
 ```
 
 If you want to calculate the head size (vscale), gray matter and white matter volume of each participant, run (after `apreproc_launcher`):
 
 ```bash
-/app/utils/brainmeasures.sh
+utils/brainmeasures.sh
 ```
 
 ## Outputs

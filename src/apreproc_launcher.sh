@@ -22,7 +22,7 @@ do
 
    fi
 	
-done < /project/data/participants.tsv
+done < <(tail -n +2 /project/data/participants.tsv)
 
 
 
