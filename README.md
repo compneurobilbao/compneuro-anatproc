@@ -30,7 +30,7 @@ You can now build the docker container:
 
 ```bash
 sudo make build
-sudo make dev
+make dev
 ```
 
 ### Usage
