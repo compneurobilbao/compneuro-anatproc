@@ -51,12 +51,12 @@ RUN echo "Downloading ANTs ..." \
     && curl -fsSL --retry 5 https://dl.dropbox.com/s/1xfhydsf4t4qoxg/ants-Linux-centos6_x86_64-v2.3.1.tar.gz \
     | tar -xz -C /opt/ants-2.3.1 --strip-components 1
 
-ENV FSLDIR="/opt/fsl-6.0.1" \
-    PATH="/opt/fsl-6.0.1/bin:$PATH" \
+ENV FSLDIR="/opt/fsl-6.0.3" \
+    PATH="/opt/fsl-6.0.3/bin:$PATH" \
     FSLOUTPUTTYPE="NIFTI_GZ" \
     FSLMULTIFILEQUIT="TRUE" \
-    FSLTCLSH="/opt/fsl-6.0.1/bin/fsltclsh" \
-    FSLWISH="/opt/fsl-6.0.1/bin/fslwish" \
+    FSLTCLSH="/opt/fsl-6.0.3/bin/fsltclsh" \
+    FSLWISH="/opt/fsl-6.0.3/bin/fslwish" \
     FSLLOCKDIR="" \
     FSLMACHINELIST="" \
     FSLREMOTECALL="" \
@@ -84,19 +84,15 @@ RUN apt-get update -qq \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
     && echo "Downloading FSL ..." \
-    && mkdir -p /opt/fsl-6.0.1 \
-    && curl -fsSL --retry 5 https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.1-centos6_64.tar.gz \
-    | tar -xz -C /opt/fsl-6.0.1 --strip-components 1 \
+    && mkdir -p /opt/fsl-6.0.3 \
+    && curl -fsSL --retry 5 https://fsl.fmrib.ox.ac.uk/fsldownloads/fsl-6.0.3-centos6_64.tar.gz \
+    | tar -xz -C /opt/fsl-6.0.3 --strip-components 1 \
     && sed -i '$iecho Some packages in this Docker container are non-free' $ND_ENTRYPOINT \
     && sed -i '$iecho If you are considering commercial use of this container, please consult the relevant license:' $ND_ENTRYPOINT \
     && sed -i '$iecho https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/Licence' $ND_ENTRYPOINT \
     && sed -i '$isource $FSLDIR/etc/fslconf/fsl.sh' $ND_ENTRYPOINT \
     && echo "Installing FSL conda environment ..." \
-    && bash /opt/fsl-6.0.1/etc/fslconf/fslpython_install.sh -f /opt/fsl-6.0.1 \
-    && echo "Downgrading deprecation module per https://github.com/kaczmarj/neurodocker/issues/271#issuecomment-514523420" \
-    && /opt/fsl-6.0.1/fslpython/bin/conda install -n fslpython -c conda-forge -y deprecation==1.* \
-    && echo "Removing bundled with FSLeyes libz likely incompatible with the one from OS" \
-    && rm -f /opt/fsl-6.0.1/bin/FSLeyes/libz.so.1
+    && bash /opt/fsl-6.0.3/etc/fslconf/fslpython_install.sh -f /opt/fsl-6.0.3
 
 ENV C3DPATH="/opt/convert3d-1.0.0" \
     PATH="/opt/convert3d-1.0.0/bin:$PATH"
@@ -139,7 +135,7 @@ RUN echo '{ \
     \n    [ \
     \n      "fsl", \
     \n      { \
-    \n        "version": "6.0.1", \
+    \n        "version": "6.0.3", \
     \n        "method": "binaries" \
     \n      } \
     \n    ], \
