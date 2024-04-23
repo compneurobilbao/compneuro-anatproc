@@ -51,12 +51,12 @@ RUN echo "Downloading ANTs ..." \
     && curl -fsSL --retry 5 https://dl.dropbox.com/s/1xfhydsf4t4qoxg/ants-Linux-centos6_x86_64-v2.3.1.tar.gz \
     | tar -xz -C /opt/ants-2.3.1 --strip-components 1
 
-ENV FSLDIR="/opt/fsl-6.0.6.2" \
-    PATH="/opt/fsl-6.0.6.2/bin:$PATH" \
+ENV FSLDIR="/opt/fsl-6.0.7.6" \
+    PATH="/opt/fsl-6.0.7.6/bin:$PATH" \
     FSLOUTPUTTYPE="NIFTI_GZ" \
     FSLMULTIFILEQUIT="TRUE" \
-    FSLTCLSH="/opt/fsl-6.0.6.2/bin/fsltclsh" \
-    FSLWISH="/opt/fsl-6.0.6.2/bin/fslwish" \
+    FSLTCLSH="/opt/fsl-6.0.7.6/bin/fsltclsh" \
+    FSLWISH="/opt/fsl-6.0.7.6/bin/fslwish" \
     FSLLOCKDIR="" \
     FSLMACHINELIST="" \
     FSLREMOTECALL="" \
