@@ -1,3 +1,3 @@
-FROM itellaetxe/compneuro_anatproc:latest
+FROM compneurobilbaolab/compneuro-anatproc:1.0
 
-RUN echo "Done Building compneuro-anatproc base image"
+RUN echo "Done pulling compneuro-anatproc base image"
