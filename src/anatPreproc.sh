@@ -8,8 +8,6 @@
 ## extraction and tissue segmentation                                          ##
 #################################################################################
 
-source activate ICAaroma
-
 participant=$1
 
 mkdir -p /project/Preproc/Anat/${participant}_acpc
