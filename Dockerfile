@@ -153,5 +153,4 @@ RUN echo '{ \
     \n  ] \
     \n}' > /neurodocker/neurodocker_specs.json
 
-WORKDIR /app
-COPY . /app
+RUN echo "Done Building compneuro-anatproc base image"
