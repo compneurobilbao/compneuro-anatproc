@@ -1,4 +1,3 @@
 FROM itellaetxe/compneuro_anatproc:latest
 
-WORKDIR /app
-COPY . /app
+RUN echo "Done Building compneuro-anatproc base image"
