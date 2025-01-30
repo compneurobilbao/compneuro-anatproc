@@ -1,4 +1,4 @@
-FROM compneurobilbaolab/compneuro-anatproc:1.0
+FROM compneurobilbaolab/compneuro-anatproc:1.1
 
 RUN echo "Done pulling compneuro-anatproc base image"
 
