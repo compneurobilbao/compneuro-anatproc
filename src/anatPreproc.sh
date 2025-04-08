@@ -22,9 +22,17 @@ cd /project/Preproc/Anat/${participant}_acpc
     /app/brain_templates/MNI152_T1_1mm.nii.gz
 
 #Scanner biasfield correction
-N4BiasFieldCorrection -d 3 \
-    -i /project/Preproc/Anat/${participant}_acpc/${participant}_acpc.nii.gz \
-    -o /project/Preproc/Anat/${participant}_acpc/${participant}_biascorr.nii.gz
+acpc_path="/project/Preproc/Anat/${participant}_acpc/${participant}_acpc.nii.gz"
+biascorr_path="/project/Preproc/Anat/${participant}_acpc/${participant}_biascorr.nii.gz"
+N4BiasFieldCorrection -d 3 -i $acpc_path -o $biascorr_path
+
+# Shift histogram of bias-field corrected image (*_biascorr) to the *_acpc image histogram
+# This is done to make sure that the bias-field corrected image has the same intensity distribution as the original image
+fslmaths $biascorr_path -mul $ratio -output $biascorr_path
+# Save ratio in file
+# The ratio is the median of the acpc image divided by the median of the bias-field corrected image
+ratio=$(echo "scale=10; $(fslstats $acpc_path -p 50)/$(fslstats $biascorr_path -p 50)" | bc)  #scale=10 gives 10 decimal places
+echo $ratio > /project/Preproc/Anat/${participant}_acpc/${participant}_acpc_biascorr_medians_ratio.txt
 
 #Brain extraction
 antsBrainExtraction.sh -d 3 \
